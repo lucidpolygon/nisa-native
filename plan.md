@@ -1,0 +1,13 @@
+- Laravel Install
+- Connect SQL DB
+- Host it
+- Packages
+    - Laravel Debugbar
+    - Something for logs (https://github.com/opcodesio/log-viewer)
+- Get Auth Setup including social auth
+- Integrations pages
+    - List of integrations
+    - Edit
+- Apps Table
+    - Index
+    - Create
