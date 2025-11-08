@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use URL;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        DB::prohibitDestructiveCommands(
+            $this->app->isProduction(),
+        );
+        Model::shouldBeStrict();
+        URL::forceScheme('https');   
     }
 }
