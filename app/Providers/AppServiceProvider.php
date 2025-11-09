@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
             $this->app->isProduction(),
         );
         Model::shouldBeStrict();
-        URL::forceScheme('https');   
+        if($this->app->isProduction()) {
+            URL::forceScheme('https');
+        }
     }
 }
