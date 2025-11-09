@@ -15,11 +15,8 @@
                 <flux:navbar.item :href="route('builder')" :current="request()->routeIs('builder')" wire:navigate>
                     {{ __('Builder') }}
                 </flux:navbar.item>
-                <flux:navbar.item :href="route('builder')" :current="request()->routeIs('builder.integrations.index')" wire:navigate>
+                <flux:navbar.item :href="route('builder.integrations.index')" :current="request()->routeIs('builder.integrations.index')" wire:navigate>
                     {{ __('Integrations') }}
-                </flux:navbar.item>
-                <flux:navbar.item :href="route('builder')" :current="request()->routeIs('builder.apps.index')" wire:navigate>
-                    {{ __('Apps') }}
                 </flux:navbar.item>
             </flux:navbar>
 
@@ -106,6 +103,9 @@
                 <flux:navlist.group :heading="__('Platform')">
                     <flux:navlist.item :href="route('builder')" :current="request()->routeIs('builder')" wire:navigate>
                       {{ __('Builder') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item :href="route('builder.integrations.index')" :current="request()->routeIs('builder.integrations.index')" wire:navigate>
+                      {{ __('Integrations') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>

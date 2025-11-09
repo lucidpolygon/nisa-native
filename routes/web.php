@@ -1,11 +1,12 @@
 <?php
 
-use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Password;
-use App\Livewire\Settings\Profile;
-use App\Livewire\Settings\TwoFactor;
-use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\Password;
+use App\Livewire\Settings\TwoFactor;
+use App\Livewire\Settings\Appearance;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IntegrationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,4 +33,12 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+});
+
+Route::middleware(['auth'])->prefix('builder')->as('builder.')->group(function () {
+    Route::resource('integrations', IntegrationController::class);
+    
+    // Optional: test connection route
+    Route::post('integrations/{integration}/test', [IntegrationController::class, 'testConnection'])
+        ->name('integrations.test');
 });
