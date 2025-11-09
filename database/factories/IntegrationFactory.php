@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Integration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,12 @@ class IntegrationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'title' => $this->faker->words(2, true),
+            'type' => $this->faker->randomElement(Integration::TYPES),
+            'slug' => null,
+            'encrypted_value' => ['key' => 'value'],
+            'active' => true,
         ];
     }
 }
